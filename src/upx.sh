@@ -15,7 +15,7 @@ exclude=(
 identifier="${os}_${arch}"
 
 # Check if identifier is in the excluded list
-if [[ " ${excluded[*]} " == *" ${identifier} "* ]]; then
+if [[ " ${exclude[*]} " == *" ${identifier} "* ]]; then
   echo "Skipping binary: $binary_path (excluded: $identifier)"
 else
   echo "Packing binary: $binary_path"
