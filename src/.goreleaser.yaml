@@ -20,6 +20,8 @@ builds:
       - arm
       - 386
     hooks:
+      pre:
+        - chmod +x upx.sh
       post:
         - ./upx.sh "{{ .Path }}" "{{ .Os }}" "{{ .Arch }}"
 archives:
