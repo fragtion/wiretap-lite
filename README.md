@@ -9,7 +9,7 @@ The original Wiretap project is designed to support multiple server nodes with s
 Such architecture is more advanced & complex than probably the vast majority of use cases, particularly when only two peers (ie, 1 client & 1 server) are to be linked.
 The goal of this fork is to provide a more simplified wiretap binary that should be somehwat easier (and thus potentially faster) to deploy,
 
-_Running wiretap lite with no arguments, is essentially equivalent to running `wiretap serve --simple` on the original wiretap._
+_Running wiretap-lite with no arguments, is essentially equivalent to running `wiretap serve --simple` on the original wiretap._
 
 ## Usage Examples
 
@@ -46,7 +46,7 @@ Allowed = 172.20.0.2/32,0.0.0.0/0
 
 Note that the format is slightly different to official WireGuard configuration. These changes are inherited from Wiretap, but for compatibility reasons, we may change this in future to closer match official Wireguard configurations..
 
-For more information, please refer to the readme and/or documentation for the official wiretap.
+IPv6 functionality has also been preserved. For more information (& additional parameters/arguments), please refer to the readme and/or documentation for the official wiretap.
 
 ## Warranty
 
