@@ -46,11 +46,19 @@ Allowed = 172.20.0.2/32,0.0.0.0/0
 
 Note that the format is slightly different to official WireGuard configuration. These changes are inherited from Wiretap, but for compatibility reasons, we may change this in future to closer match official Wireguard configurations..
 
-Pull requests welcome :)
-
 For more information, please refer to the readme and/or documentation for the official wiretap.
 
-### Donate
+## Warranty
+
+None whatsoever. This was a hobby project for me that I decided to upload for whoever could benefit from it. You use it entirely at your own risk & discretion. Pull requests welcome :)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
+## Coffee
+
 Did this make you happy? I'd love to do more development like this! Please donate to show your support :)
 
 BTC: 1Q4QkBn2Rx4hxFBgHEwRJXYHJjtfusnYfy
