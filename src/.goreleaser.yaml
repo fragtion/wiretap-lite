@@ -19,6 +19,9 @@ builds:
       - amd64
       - arm
       - 386
+    hooks:
+      post:
+        - ./upx.sh "{{ .Path }}" "{{ .Os }}" "{{ .Arch }}"
 archives:
   - format_overrides:
       - goos: windows
@@ -37,21 +40,3 @@ changelog:
 # modelines, feel free to remove those if you don't want/use them:
 # yaml-language-server: $schema=https://goreleaser.com/static/schema.json
 # vim: set ts=2 sw=2 tw=0 fo=cnqoj
-upx:
-  - # Whether to enable it or not.
-    #
-    # Templates: allowed.
-    enabled: true
-
-    # Filter by GOOS.
-    goos: [linux, windows]
-
-    # Compress argument.
-    # Valid options are from '1' (faster) to '9' (better), and 'best'.
-    compress: best
-
-    # Whether to try LZMA (slower).
-    lzma: true
-
-    # Whether to try all methods and filters (slow).
-    brute: true
