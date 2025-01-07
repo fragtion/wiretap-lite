@@ -1,6 +1,6 @@
 <div align="center">
 
-# <img align="center" src="media/wiretap_logo.png" width="20%"> Wiretap Lite
+# <img align="center" src="![media/wiretap_logo.png](https://github.com/sandialabs/wiretap/raw/main/media/wiretap_logo.png)" width="20%"> Wiretap Lite
 
 [Wiretap](https://github.com/sandialabs/wiretap) is a transparent, VPN-like proxy server that tunnels traffic via WireGuard and requires no special privileges to run.
 </div>

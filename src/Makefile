@@ -5,6 +5,7 @@ VERSION=$(shell git describe --tags --abbrev=0 --always)
 
 # defaults
 OS=$(shell go env GOOS)## Target OS
+#OS=windows
 ARCH=$(shell go env GOARCH)## Target architecture
 BIN=../bin## Binary location
 
