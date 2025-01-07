@@ -22,7 +22,7 @@ if [[ " ${exclude[*]} " == *" ${identifier} "* ]]; then
 else
   echo "Packing binary: $binary_path"
   if command -v upx >/dev/null 2>&1; then
-    upx "$binary_path"
+    upx --brute -9 "$binary_path"
   else
     echo "UPX is not installed, skipping packing for $binary_path"
   fi
