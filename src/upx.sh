@@ -9,6 +9,8 @@ arch=$3
 exclude=(
   "windows_arm64"
   "windows_arm"
+  "darwin_amd64"
+  "darwin_arm64"
 )
 
 # Create a combined identifier
