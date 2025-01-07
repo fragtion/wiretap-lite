@@ -48,38 +48,11 @@ var (
 	SubnetV6Bits       = 48
 )
 
-var rootCmd = &cobra.Command{
-	Use: "wiretap",
-	Run: func(cmd *cobra.Command, args []string) {
-		if len(args) == 0 {
-			err := cmd.Help()
-			if err != nil {
-				fmt.Println("Failed to print help:", err)
-			}
-			os.Exit(0)
-		}
-	},
-	Version: Version,
-	CompletionOptions: cobra.CompletionOptions{
-		HiddenDefaultCmd: true,
-	},
-}
-
 // check is a helper function that logs and exits if an error is not nil.
 func check(message string, err error) {
 	if err != nil {
 		log.Fatalf("%s: %v", message, err)
 	}
-}
-
-// Extract the port from the endpoint string 
-func portFromEndpoint(endpoint string) int {
-	_, strPort, err := net.SplitHostPort(endpoint)
-	check("cannot extract port from endpoint argument", err);
-
-	p, err := strconv.Atoi(strPort);
-	check("cannot extract port from endpoint argument", err);
-	return p;
 }
 
 type serveCmdConfig struct {
@@ -106,8 +79,6 @@ type wiretapDefaultConfig struct {
 	allowedIPs       string
 	serverAddr4      string
 	serverAddr6      string
-	apiAddr          string
-	apiV4Addr        string
 	keepalive        int
 	mtu              int
 }
