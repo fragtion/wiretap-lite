@@ -34,7 +34,7 @@ wiretap_server.conf:
 ```
 [Interface]
 PrivateKey = insert-private-key-for-this-node-here
-ListenPort = 51820
+Port = 51820
 IPv4 = 172.20.0.1
 LocalhostIP = 172.20.0.1
 
