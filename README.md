@@ -19,12 +19,12 @@ WIRETAP_PEER_ENDPOINT="some.ip.address:55550" \
 WIRETAP_INTERFACE_IPV4=172.20.0.1 \
 WIRETAP_INTERFACE_LOCALHOSTIP=172.20.0.1 \
 WIRETAP_PEER_ALLOWED=172.20.0.2/32,0.0.0.0/0 \
-./wiretap
+./wiretap-lite
 ```
 
 Or:
 
-`./wiretap --private insert-private-key-for-this-node-here --port 51820 --public insert-public-key-of-remote-node-here --endpoint some.ip.address:55550 --ipv4 172.20.0.1 --localhost-ip 172.20.0.1 --allowed="172.20.0.2/32,0.0.0.0/0"`
+`./wiretap-lite --private insert-private-key-for-this-node-here --port 51820 --public insert-public-key-of-remote-node-here --endpoint some.ip.address:55550 --ipv4 172.20.0.1 --localhost-ip 172.20.0.1 --allowed="172.20.0.2/32,0.0.0.0/0"`
 
 For more information, please refer to the readme and/or documentation for the official wiretap.
 
