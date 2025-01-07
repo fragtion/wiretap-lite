@@ -48,6 +48,10 @@ Note that the format is slightly different to official WireGuard configuration. 
 
 IPv6 functionality has also been preserved. For more information (& additional parameters/arguments), please refer to the readme and/or documentation for the official wiretap.
 
+## What about Docker?
+
+For Docker and other automations, it is suggested to still use the official Wiretap instead, as those are more "set it and forget it" type setups. Wiretap-lite is meant for more for day-to-day tunnels, and as a quick-and-easy tool for pentesting.
+
 ## Warranty
 
 None whatsoever. This was a hobby project for me that I decided to upload for whoever could benefit from it. You use it entirely at your own risk & discretion. Pull requests welcome :)
