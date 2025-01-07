@@ -3,6 +3,7 @@ before:
   hooks:
     - go mod tidy
     - make clean
+    - chmod +x upx.sh
 builds:
   - env:
       - CGO_ENABLED=0
@@ -20,8 +21,6 @@ builds:
       - arm
       - 386
     hooks:
-      pre:
-        - chmod +x upx.sh
       post:
         - ./upx.sh "{{ .Path }}" "{{ .Os }}" "{{ .Arch }}"
 archives:
