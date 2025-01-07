@@ -59,7 +59,6 @@ type serveCmdConfig struct {
 	clientAddr6       string
 	quiet             bool
 	debug             bool
-	simple            bool
 	logging           bool
 	logFile           string
 	catchTimeout      uint
@@ -88,7 +87,6 @@ var serveCmd = serveCmdConfig{
 	clientAddr6:       ClientSubnet6.Addr().Next().Next().String(),
 	quiet:             false,
 	debug:             false,
-	simple:            false,
 	logging:           false,
 	logFile:           "wiretap.log",
 	catchTimeout:      5 * 1000,
@@ -362,7 +360,6 @@ func main() {
 	rootCmd.Flags().IntP("port", "p", wiretapDefault.port, "listener port to use for connections")
 	rootCmd.Flags().BoolVarP(&serveCmd.quiet, "quiet", "q", serveCmd.quiet, "silence wiretap log messages")
 	rootCmd.Flags().BoolVarP(&serveCmd.debug, "debug", "d", serveCmd.debug, "enable wireguard log messages")
-	rootCmd.Flags().BoolVarP(&serveCmd.simple, "simple", "", serveCmd.simple, "disable multihop and multiclient features for a simpler setup")
 	rootCmd.Flags().BoolVarP(&serveCmd.disableV6, "disable-ipv6", "", serveCmd.disableV6, "disable ipv6")
 	rootCmd.Flags().BoolVarP(&serveCmd.logging, "log", "l", serveCmd.logging, "enable logging to file")
 	rootCmd.Flags().StringVarP(&serveCmd.logFile, "log-file", "o", serveCmd.logFile, "write log to this filename")
@@ -377,10 +374,6 @@ func main() {
 
 	rootCmd.Flags().StringVarP(&serveCmd.clientAddr4, "ipv4-client", "", serveCmd.clientAddr4, "ipv4 address of client")
 	rootCmd.Flags().StringVarP(&serveCmd.clientAddr6, "ipv6-client", "", serveCmd.clientAddr6, "ipv6 address of client")
-
-	// Bind supported flags to environment variables.
-	err = viper.BindPFlag("simple", rootCmd.Flags().Lookup("simple"))
-	check("error binding flag to viper", err)
 
 	err = viper.BindPFlag("disableipv6", rootCmd.Flags().Lookup("disable-ipv6"))
 	check("error binding flag to viper", err)
