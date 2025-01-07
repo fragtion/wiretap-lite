@@ -44,9 +44,16 @@ wiretap:
 
 ## all: Build binaries for every OS/ARCH pair listed in the Makefile
 all: 
-	$(MAKE) OS=windows ARCH=amd64
-	$(MAKE) OS=darwin ARCH=amd64
-	$(MAKE) OS=linux ARCH=amd64
+        $(MAKE) OS=windows ARCH=amd64
+        $(MAKE) OS=darwin ARCH=amd64
+        $(MAKE) OS=linux ARCH=amd64
+        $(MAKE) OS=windows ARCH=386
+        $(MAKE) OS=linux ARCH=386
+        $(MAKE) OS=windows ARCH=arm64
+        $(MAKE) OS=darwin ARCH=arm64
+        $(MAKE) OS=linux ARCH=arm64
+        $(MAKE) OS=windows ARCH=arm
+        $(MAKE) OS=linux ARCH=arm
 
 ## packed: Build and pack all binaries with upx
 packed: all
