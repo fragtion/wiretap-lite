@@ -11,7 +11,8 @@ _Running wiretap lite with no arguments, is essentially equivalent to running `w
 
 ## Usage Examples
 
-```WIRETAP_INTERFACE_PRIVATEKEY="insert-private-key-for-this-node-here" \
+```
+WIRETAP_INTERFACE_PRIVATEKEY="insert-private-key-for-this-node-here" \
 WIRETAP_INTERFACE_PORT="51820" \
 WIRETAP_PEER_PUBLICKEY="insert-public-key-of-remote-node-here" \
 WIRETAP_PEER_ENDPOINT="some.ip.address:55550" \
