@@ -37,7 +37,6 @@ var (
 	Port               = 51820
 	Keepalive          = 25
 	MTU                = 1420
-	ShowHidden         = false
 	ClientSubnet4 = netip.MustParsePrefix("172.16.0.0/16")
 	ClientSubnet6 = netip.MustParsePrefix("fd:16::/40")
 	Subnets4      = netip.MustParsePrefix("172.17.0.0/16")
