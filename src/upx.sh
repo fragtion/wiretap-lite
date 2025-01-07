@@ -7,8 +7,8 @@ arch=$3
 
 # Define excluded types
 exclude=(
-  "windows_arm64_v8.0"
-  "windows_arm_6"
+  "windows_arm64"
+  "windows_arm"
 )
 
 # Create a combined identifier
