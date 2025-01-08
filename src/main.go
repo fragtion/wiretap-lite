@@ -37,10 +37,10 @@ var (
 	Port               = 51820
 	Keepalive          = 25
 	MTU                = 1420
-	ClientSubnet4 = netip.MustParsePrefix("172.16.0.0/16")
-	ClientSubnet6 = netip.MustParsePrefix("fd:16::/40")
-	Subnets4      = netip.MustParsePrefix("172.17.0.0/16")
-	Subnets6      = netip.MustParsePrefix("fd:17::/40")
+	ClientSubnet4      = netip.MustParsePrefix("172.16.0.0/16")
+	ClientSubnet6      = netip.MustParsePrefix("fd:16::/40")
+	ServerSubnet4      = netip.MustParsePrefix("172.17.0.0/16")
+	ServerSubnet6      = netip.MustParsePrefix("fd:17::/40")
 	SubnetV4Bits       = 24
 	SubnetV6Bits       = 48
 )
@@ -100,9 +100,9 @@ var serveCmd = serveCmdConfig{
 var wiretapDefault = wiretapDefaultConfig{
 	endpoint:         Endpoint,
 	port:             Port,
-	allowedIPs:       fmt.Sprintf("%s,%s", ClientSubnet4.Addr().Next().String()+"/32", ClientSubnet6.Addr().Next().String()+"/128"),
-	serverAddr4:      Subnets4.Addr().Next().Next().String(),
-	serverAddr6:      Subnets6.Addr().Next().Next().String(),
+	allowedIPs:       fmt.Sprintf("%s,%s", ClientSubnet4.Addr().Next().Next().String()+"/32", ClientSubnet6.Addr().Next().Next().String()+"/128"),
+	serverAddr4:      ServerSubnet4.Addr().Next().String(),
+	serverAddr6:      ServerSubnet6.Addr().Next().String(),
 	keepalive:        Keepalive,
 	mtu:              MTU,
 }
