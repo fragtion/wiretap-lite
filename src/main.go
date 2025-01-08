@@ -67,9 +67,6 @@ type serveCmdConfig struct {
 	keepaliveInterval uint
 	disableV6         bool
 	localhostIP       string
-}
-
-type wiretapDefaultConfig struct {
 	endpoint         string
 	port             int
 	allowedIPs       string
@@ -95,9 +92,6 @@ var serveCmd = serveCmdConfig{
 	keepaliveInterval: 60,
 	disableV6:         false,
 	localhostIP:       "",
-}
-
-var wiretapDefault = wiretapDefaultConfig{
 	endpoint:         Endpoint,
 	port:             Port,
 	allowedIPs:       fmt.Sprintf("%s,%s", ClientSubnet4.Addr().Next().Next().String()+"/32", ClientSubnet6.Addr().Next().Next().String()+"/128"),
@@ -356,15 +350,15 @@ func main() {
 
 	// Flags.
 	rootCmd.Flags().StringVarP(&serveCmd.configFile, "config-file", "f", serveCmd.configFile, "wireguard config file to read from")
-	rootCmd.Flags().IntP("port", "p", wiretapDefault.port, "listener port to use for connections")
+	rootCmd.Flags().IntP("port", "p", serveCmd.port, "listener port to use for connections")
 	rootCmd.Flags().BoolVarP(&serveCmd.quiet, "quiet", "q", serveCmd.quiet, "silence wiretap log messages")
 	rootCmd.Flags().BoolVarP(&serveCmd.debug, "debug", "d", serveCmd.debug, "enable wireguard log messages")
 	rootCmd.Flags().BoolVarP(&serveCmd.disableV6, "disable-ipv6", "", serveCmd.disableV6, "disable ipv6")
 	rootCmd.Flags().BoolVarP(&serveCmd.logging, "log", "l", serveCmd.logging, "enable logging to file")
 	rootCmd.Flags().StringVarP(&serveCmd.logFile, "log-file", "o", serveCmd.logFile, "write log to this filename")
 	rootCmd.Flags().StringVarP(&serveCmd.localhostIP, "localhost-ip", "i", serveCmd.localhostIP, "[EXPERIMENTAL] redirect Wiretap packets destined for this IPv4 address to server's localhost")
-	rootCmd.Flags().IntP("keepalive", "k", wiretapDefault.keepalive, "tunnel keepalive in seconds")
-	rootCmd.Flags().IntP("mtu", "m", wiretapDefault.mtu, "tunnel MTU")
+	rootCmd.Flags().IntP("keepalive", "k", serveCmd.keepalive, "tunnel keepalive in seconds")
+	rootCmd.Flags().IntP("mtu", "m", serveCmd.mtu, "tunnel MTU")
 	rootCmd.Flags().UintVarP(&serveCmd.catchTimeout, "completion-timeout", "", serveCmd.catchTimeout, "time in ms for client to complete TCP connection to server")
 	rootCmd.Flags().UintVarP(&serveCmd.connTimeout, "conn-timeout", "", serveCmd.connTimeout, "time in ms for server to wait for outgoing TCP handshakes to complete")
 	rootCmd.Flags().UintVarP(&serveCmd.keepaliveIdle, "keepalive-idle", "", serveCmd.keepaliveIdle, "time in seconds before TCP keepalives are sent to client")
@@ -386,10 +380,10 @@ func main() {
 	// Deprecated flags, kept for backwards compatibility.
 	rootCmd.Flags().StringP("private", "", "", "wireguard private key for interface")
 	rootCmd.Flags().StringP("public", "", "", "wireguard public key of remote peer for interface")
-	rootCmd.Flags().StringP("endpoint", "", wiretapDefault.endpoint, "socket address of remote peer that server will connect to (example \"1.2.3.4:51820\")")
-	rootCmd.Flags().StringP("allowed", "a", wiretapDefault.allowedIPs, "comma-separated list of CIDR IP ranges to associate with peer")
-	rootCmd.Flags().StringP("ipv4", "", wiretapDefault.serverAddr4, "ipv4 address")
-	rootCmd.Flags().StringP("ipv6", "", wiretapDefault.serverAddr6, "ipv6 address")
+	rootCmd.Flags().StringP("endpoint", "", serveCmd.endpoint, "socket address of remote peer that server will connect to (example \"1.2.3.4:51820\")")
+	rootCmd.Flags().StringP("allowed", "a", serveCmd.allowedIPs, "comma-separated list of CIDR IP ranges to associate with peer")
+	rootCmd.Flags().StringP("ipv4", "", serveCmd.serverAddr4, "ipv4 address")
+	rootCmd.Flags().StringP("ipv6", "", serveCmd.serverAddr6, "ipv6 address")
 
 	// Bind deprecated flags to viper.
 	err = viper.BindPFlag("Interface.privatekey", rootCmd.Flags().Lookup("private"))
@@ -413,14 +407,14 @@ func main() {
 	check("error binding flag to viper", err)
 
 	// Set default values for viper.
-	viper.SetDefault("Interface.port", wiretapDefault.port)
-	viper.SetDefault("Interface.ipv4", wiretapDefault.serverAddr4)
-	viper.SetDefault("Interface.ipv6", wiretapDefault.serverAddr6)
-	viper.SetDefault("Interface.mtu", wiretapDefault.mtu)
+	viper.SetDefault("Interface.port", serveCmd.port)
+	viper.SetDefault("Interface.ipv4", serveCmd.serverAddr4)
+	viper.SetDefault("Interface.ipv6", serveCmd.serverAddr6)
+	viper.SetDefault("Interface.mtu", serveCmd.mtu)
 
-	viper.SetDefault("Interface.Peer.endpoint", wiretapDefault.endpoint)
-	viper.SetDefault("Interface.Peer.allowed", wiretapDefault.allowedIPs)
-	viper.SetDefault("Interface.Peer.keepalive", wiretapDefault.keepalive)
+	viper.SetDefault("Interface.Peer.endpoint", serveCmd.endpoint)
+	viper.SetDefault("Interface.Peer.allowed", serveCmd.allowedIPs)
+	viper.SetDefault("Interface.Peer.keepalive", serveCmd.keepalive)
 
 	rootCmd.Flags().SortFlags = false
 
