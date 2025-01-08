@@ -18,15 +18,15 @@ WIRETAP_INTERFACE_PRIVATEKEY="insert-private-key-for-this-node-here" \
 WIRETAP_INTERFACE_PORT="51820" \
 WIRETAP_PEER_PUBLICKEY="insert-public-key-of-remote-node-here" \
 WIRETAP_PEER_ENDPOINT="some.ip.address:55550" \
-WIRETAP_INTERFACE_IPV4=172.20.0.1 \
+WIRETAP_INTERFACE_IPV4=172.21.0.1 \
 WIRETAP_INTERFACE_LOCALHOSTIP=172.20.0.1 \
-WIRETAP_PEER_ALLOWED=172.20.0.2/32,0.0.0.0/0 \
+WIRETAP_PEER_ALLOWED=172.20.0.2/32 \
 ./wiretap-lite
 ```
 
 Or:
 
-`./wiretap-lite --private insert-private-key-for-this-node-here --port 51820 --public insert-public-key-of-remote-node-here --endpoint some.ip.address:55550 --ipv4 172.20.0.1 --localhost-ip 172.20.0.1 --allowed="172.20.0.2/32,0.0.0.0/0"`
+`./wiretap-lite --private insert-private-key-for-this-node-here --port 51820 --public insert-public-key-of-remote-node-here --endpoint some.ip.address:55550 --ipv4 172.21.0.1 --localhost-ip 172.20.0.1 --allowed="172.20.0.2/32"`
 
 Or `./wiretap-lite -f wiretap_server.cfg`:
 
@@ -35,13 +35,13 @@ wiretap_server.conf:
 [Interface]
 PrivateKey = insert-private-key-for-this-node-here
 Port = 51820
-IPv4 = 172.20.0.1
+IPv4 = 172.21.0.1
 LocalhostIP = 172.20.0.1
 
 [Peer]
 PublicKey = insert-public-key-of-remote-node-here
 Endpoint = some.ip.address:55550
-Allowed = 172.20.0.2/32,0.0.0.0/0
+Allowed = 172.20.0.2/32
 ```
 
 Note that the format is slightly different to official WireGuard configuration. These changes are inherited from Wiretap, but for compatibility reasons, we may change this in future to closer match official Wireguard configurations..
