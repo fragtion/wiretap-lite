@@ -26,7 +26,7 @@ WIRETAP_PEER_ALLOWED=172.20.0.2/32 \
 
 Or:
 
-`./wiretap-lite --private insert-private-key-for-this-node-here --port 51820 --public insert-public-key-of-remote-node-here --endpoint some.ip.address:55550 --ipv4 172.21.0.1 --localhost-ip 172.20.0.1 --allowed="172.20.0.2/32"`
+`./wiretap-lite --private insert-private-key-for-this-node-here --port 51820 --public insert-public-key-of-remote-node-here --endpoint some.ip.address:55550 --ipv4 172.20.0.1 --localhost-ip 172.16.0.100 --allowed="172.20.0.2/32"`
 
 Or `./wiretap-lite -f wiretap_server.cfg`:
 
