@@ -9,7 +9,7 @@ The original Wiretap project is designed to support multiple server nodes with s
 Such architecture is more advanced & complex than probably the vast majority of use cases, particularly when only two peers (ie, 1 client & 1 server) are to be linked.
 The goal of this fork is to provide a more simplified wiretap binary that should be somehwat easier (and thus potentially faster) to deploy,
 
-_Running wiretap-lite with no arguments, is essentially equivalent to running `wiretap serve --simple` on the original wiretap._
+_Running `wiretap-lite` with no arguments, is essentially equivalent to running `wiretap serve --simple` on the original wiretap. This also means that` wiretap-lite` run without any arguments won't output any help - for that, you'll need to explicitly run `wiretap-lite --help` instead._
 
 ## Usage Examples
 
@@ -18,8 +18,8 @@ WIRETAP_INTERFACE_PRIVATEKEY="insert-private-key-for-this-node-here" \
 WIRETAP_INTERFACE_PORT="51820" \
 WIRETAP_PEER_PUBLICKEY="insert-public-key-of-remote-node-here" \
 WIRETAP_PEER_ENDPOINT="some.ip.address:55550" \
-WIRETAP_INTERFACE_IPV4=172.21.0.1 \
-WIRETAP_INTERFACE_LOCALHOSTIP=172.20.0.1 \
+WIRETAP_INTERFACE_IPV4=172.20.0.1 \
+WIRETAP_INTERFACE_LOCALHOSTIP=172.16.0.100 \
 WIRETAP_PEER_ALLOWED=172.20.0.2/32 \
 ./wiretap-lite
 ```
@@ -35,8 +35,8 @@ wiretap_server.conf:
 [Interface]
 PrivateKey = insert-private-key-for-this-node-here
 Port = 51820
-IPv4 = 172.21.0.1
-LocalhostIP = 172.20.0.1
+IPv4 = 172.20.0.1
+LocalhostIP = 172.16.0.100
 
 [Peer]
 PublicKey = insert-public-key-of-remote-node-here
