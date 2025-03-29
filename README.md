@@ -52,7 +52,7 @@ IPv6 functionality has also been preserved. For more information (& additional p
 
 ## What about Docker?
 
-wiretap-lite is a single binary tool that is easy to deploy and run as-is. It is available for a wide range of system architectures. For Docker and other automations, consider using the official Wiretap instead. Feel free to submit a PR
+wiretap-lite is a single, standalone binary tool that is easy to deploy and run as-is. It is available for a wide range of system architectures. For Docker and other automations, consider using the official Wiretap instead. Feel free to submit a PR
 
 ## Warranty
 
