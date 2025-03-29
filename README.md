@@ -44,7 +44,7 @@ Endpoint = some.ip.address:55550
 Allowed = 172.20.0.2/32
 ```
 
-At this point, you should be able to access services hosted at the wiretap node, by routing to its localhost IP via its peer IP (`IPv4`). Additionally, Wiretap's built-in virtual network stack will "forward and masquerade" any traffic that is routed through it, such as other devices on the host's LAN network (a completely different IP range).
+At this point, you should be able to access services hosted at the wiretap node, by routing to its localhost IP via its peer IP (`IPv4`). Additionally, Wiretap's built-in virtual network stack will "forward and masquerade" any traffic that is routed through it, such as other devices on the host's LAN network (a completely different IP range). In theory, the wiretap peer could thus also be used as an internet gateway this way.
 
 Note that some of the key names in the configuration file do differ slightly from the official WireGuard configuration. These changes are inherited from Wiretap. We may consider changing this in a future release of wiretap-lite, in order to minimize discrepencies with wireguard's official syntax
 
