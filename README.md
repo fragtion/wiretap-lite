@@ -62,11 +62,12 @@ None whatsoever. This was a hobby project for me that I decided to upload for wh
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-
 ## Coffee
 
 Did this make you happy? I'd love to do more development like this! Please donate to show your support :)
 
-BTC: 1Q4QkBn2Rx4hxFBgHEwRJXYHJjtfusnYfy
+**PayPal**: [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?business=2CGE77L7BZS3S&no_recurring=0)
 
-XMR: 4AfeGxGR4JqDxwVGWPTZHtX5QnQ3dTzwzMWLBFvysa6FTpTbz8Juqs25XuysVfowQoSYGdMESqnvrEQ969nR9Q7mEgpA5Zm
+**BTC:** 1Q4QkBn2Rx4hxFBgHEwRJXYHJjtfusnYfy
+
+**XMR:** 4AfeGxGR4JqDxwVGWPTZHtX5QnQ3dTzwzMWLBFvysa6FTpTbz8Juqs25XuysVfowQoSYGdMESqnvrEQ969nR9Q7mEgpA5Zm
