@@ -5,6 +5,7 @@ VERSION=$(shell git describe --tags --abbrev=0 --always)
 
 # defaults
 OS=$(shell go env GOOS)## Target OS
+#OS=windows
 ARCH=$(shell go env GOARCH)## Target architecture
 BIN=../bin## Binary location
 
@@ -46,6 +47,13 @@ all:
 	$(MAKE) OS=windows ARCH=amd64
 	$(MAKE) OS=darwin ARCH=amd64
 	$(MAKE) OS=linux ARCH=amd64
+	$(MAKE) OS=windows ARCH=386
+	$(MAKE) OS=linux ARCH=386
+	$(MAKE) OS=windows ARCH=arm64
+	$(MAKE) OS=darwin ARCH=arm64
+	$(MAKE) OS=linux ARCH=arm64
+	$(MAKE) OS=windows ARCH=arm
+	$(MAKE) OS=linux ARCH=arm
 
 ## packed: Build and pack all binaries with upx
 packed: all
