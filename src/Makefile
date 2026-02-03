@@ -5,6 +5,7 @@ VERSION=$(shell git describe --tags --abbrev=0 --always)
 
 # defaults
 OS=$(shell go env GOOS)## Target OS
+#OS=windows
 ARCH=$(shell go env GOARCH)## Target architecture
 BIN=../bin## Binary location
 
@@ -32,13 +33,13 @@ OUTPUT=$(BIN)/$@_$(OS)_$(ARCH)$(EXT)## Output location
 
 # ld flags
 LDFLAGS=-s -w
-LDFLAGS+=-X wiretap/cmd.Version=$(VERSION)
+LDFLAGS+=-X main.Version=$(VERSION)
 
-.PHONY: all packed wiretap clean help
-.DEFAULT_GOAL := wiretap
+.PHONY: all packed wiretap-lite clean help
+.DEFAULT_GOAL := wiretap-lite
 
-## wiretap: Build binary for the specified OS and architecture 
-wiretap:
+## wiretap-lite: Build binary for the specified OS and architecture 
+wiretap-lite:
 	$(ENV) $(GOBUILD) $(NOARGFLAGS) -o $(OUTPUT) -ldflags "$(LDFLAGS)" *.go
 
 ## all: Build binaries for every OS/ARCH pair listed in the Makefile
@@ -46,10 +47,17 @@ all:
 	$(MAKE) OS=windows ARCH=amd64
 	$(MAKE) OS=darwin ARCH=amd64
 	$(MAKE) OS=linux ARCH=amd64
+	$(MAKE) OS=windows ARCH=386
+	$(MAKE) OS=linux ARCH=386
+	$(MAKE) OS=windows ARCH=arm64
+	$(MAKE) OS=darwin ARCH=arm64
+	$(MAKE) OS=linux ARCH=arm64
+	$(MAKE) OS=windows ARCH=arm
+	$(MAKE) OS=linux ARCH=arm
 
 ## packed: Build and pack all binaries with upx
 packed: all
-	upx --brute $(BIN)/wiretap_*
+	upx --brute $(BIN)/wiretap-lite_*
 
 
 ## clean: Remove all binaries
